@@ -76,21 +76,41 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.product.fields.photo_helper') }}</span>
                         </div>
-                        <div class="form-group {{ $errors->has('atributes') ? 'has-error' : '' }}">
-                            <label for="atributes">{{ trans('cruds.product.fields.atribute') }}</label>
-                            <div style="padding-bottom: 4px">
-                                <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                                <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                            </div>
-                            <select class="form-control select2" name="atributes[]" id="atributes" multiple>
-                                @foreach($atributes as $id => $atribute)
-                                    <option value="{{ $id }}" {{ in_array($id, old('atributes', [])) ? 'selected' : '' }}>{{ $atribute }}</option>
+                        <div class="form-group {{ $errors->has('country') ? 'has-error' : '' }}">
+                            <label for="country_id">{{ trans('cruds.product.fields.country') }}</label>
+                            <select class="form-control select2" name="country_id" id="country_id">
+                                @foreach($countries as $id => $country)
+                                    <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $country }}</option>
                                 @endforeach
                             </select>
-                            @if($errors->has('atributes'))
-                                <span class="help-block" role="alert">{{ $errors->first('atributes') }}</span>
+                            @if($errors->has('country_id'))
+                                <span class="help-block" role="alert">{{ $errors->first('country_id') }}</span>
                             @endif
-                            <span class="help-block">{{ trans('cruds.product.fields.atribute_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.product.fields.country_helper') }}</span>
+                        </div>
+                        <div class="form-group {{ $errors->has('color') ? 'has-error' : '' }}">
+                            <label for="color_id">{{ trans('cruds.product.fields.color') }}</label>
+                            <select class="form-control select2" name="color_id" id="color_id">
+                                @foreach($colors as $id => $color)
+                                    <option value="{{ $id }}" {{ old('color_id') == $id ? 'selected' : '' }}>{{ $color }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('color_id'))
+                                <span class="help-block" role="alert">{{ $errors->first('color_id') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.product.fields.color_helper') }}</span>
+                        </div>
+                        <div class="form-group {{ $errors->has('brand_name') ? 'has-error' : '' }}">
+                            <label for="brand_name_id">{{ trans('cruds.product.fields.brand_name') }}</label>
+                            <select class="form-control select2" name="brand_name_id" id="brand_name_id">
+                                @foreach($brand_names as $id => $brand_name)
+                                    <option value="{{ $id }}" {{ old('brand_name_id') == $id ? 'selected' : '' }}>{{ $brand_name }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('brand_name_id'))
+                                <span class="help-block" role="alert">{{ $errors->first('brand_name_id') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.product.fields.brand_name_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">

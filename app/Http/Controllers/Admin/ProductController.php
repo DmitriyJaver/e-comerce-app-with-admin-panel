@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Attribute;
+use App\Brand;
+use App\Color;
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
@@ -36,9 +38,13 @@ class ProductController extends Controller
 
         $tags = ProductTag::all()->pluck('name', 'id');
 
-        $atributes = Attribute::all()->pluck('name', 'id');
+        $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.products.create', compact('categories', 'tags', 'atributes'));
+        $colors = Color::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $brand_names = Brand::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.products.create', compact('categories', 'tags', 'countries', 'colors', 'brand_names'));
     }
 
     public function store(StoreProductRequest $request)
@@ -46,7 +52,6 @@ class ProductController extends Controller
         $product = Product::create($request->all());
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
-        $product->atributes()->sync($request->input('atributes', []));
 
         if ($request->input('photo', false)) {
             $product->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
@@ -63,11 +68,15 @@ class ProductController extends Controller
 
         $tags = ProductTag::all()->pluck('name', 'id');
 
-        $atributes = Attribute::all()->pluck('name', 'id');
+        $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $product->load('categories', 'tags', 'atributes');
+        $colors = Color::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.products.edit', compact('categories', 'tags', 'atributes', 'product'));
+        $brand_names = Brand::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $product->load('categories', 'tags', 'country', 'color', 'brand_name');
+
+        return view('admin.products.edit', compact('categories', 'tags', 'countries', 'colors', 'brand_names', 'product'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
@@ -75,7 +84,6 @@ class ProductController extends Controller
         $product->update($request->all());
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
-        $product->atributes()->sync($request->input('atributes', []));
 
         if ($request->input('photo', false)) {
             if (!$product->photo || $request->input('photo') !== $product->photo->file_name) {
@@ -92,7 +100,7 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $product->load('categories', 'tags', 'atributes');
+        $product->load('categories', 'tags', 'country', 'color', 'brand_name');
 
         return view('admin.products.show', compact('product'));
     }

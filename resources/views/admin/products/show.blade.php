@@ -83,12 +83,26 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.product.fields.atribute') }}
+                                        {{ trans('cruds.product.fields.country') }}
                                     </th>
                                     <td>
-                                        @foreach($product->atributes as $key => $atribute)
-                                            <span class="label label-info">{{ $atribute->name }}</span>
-                                        @endforeach
+                                        {{ $product->country->name ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.product.fields.color') }}
+                                    </th>
+                                    <td>
+                                        {{ $product->color->name ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.product.fields.brand_name') }}
+                                    </th>
+                                    <td>
+                                        {{ $product->brand_name->name ?? '' }}
                                     </td>
                                 </tr>
                             </tbody>

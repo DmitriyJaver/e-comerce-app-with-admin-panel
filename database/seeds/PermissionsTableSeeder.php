@@ -138,23 +138,63 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '33',
-                'title' => 'attribute_create',
+                'title' => 'country_create',
             ],
             [
                 'id'    => '34',
-                'title' => 'attribute_edit',
+                'title' => 'country_edit',
             ],
             [
                 'id'    => '35',
-                'title' => 'attribute_show',
+                'title' => 'country_show',
             ],
             [
                 'id'    => '36',
-                'title' => 'attribute_delete',
+                'title' => 'country_delete',
             ],
             [
                 'id'    => '37',
-                'title' => 'attribute_access',
+                'title' => 'country_access',
+            ],
+            [
+                'id'    => '38',
+                'title' => 'color_create',
+            ],
+            [
+                'id'    => '39',
+                'title' => 'color_edit',
+            ],
+            [
+                'id'    => '40',
+                'title' => 'color_show',
+            ],
+            [
+                'id'    => '41',
+                'title' => 'color_delete',
+            ],
+            [
+                'id'    => '42',
+                'title' => 'color_access',
+            ],
+            [
+                'id'    => '43',
+                'title' => 'brand_create',
+            ],
+            [
+                'id'    => '44',
+                'title' => 'brand_edit',
+            ],
+            [
+                'id'    => '45',
+                'title' => 'brand_show',
+            ],
+            [
+                'id'    => '46',
+                'title' => 'brand_delete',
+            ],
+            [
+                'id'    => '47',
+                'title' => 'brand_access',
             ],
         ];
 

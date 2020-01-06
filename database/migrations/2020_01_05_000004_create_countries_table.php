@@ -4,16 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttributesTable extends Migration
+class CreateCountriesTable extends Migration
 {
     public function up()
     {
-        Schema::create('attributes', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->longText('description')->nullable();
+            $table->string('name');
 
-            $table->string('name')->unique();
+            $table->string('short_code');
 
             $table->timestamps();
 

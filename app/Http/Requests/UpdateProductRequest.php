@@ -37,12 +37,6 @@ class UpdateProductRequest extends FormRequest
             'tags'         => [
                 'array',
             ],
-            'atributes.*'  => [
-                'integer',
-            ],
-            'atributes'    => [
-                'array',
-            ],
         ];
     }
 }

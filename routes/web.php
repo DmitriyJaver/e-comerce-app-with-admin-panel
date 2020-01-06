@@ -42,7 +42,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
     Route::resource('products', 'ProductController');
 
-    // Attributes
-    Route::delete('attributes/destroy', 'AttributesController@massDestroy')->name('attributes.massDestroy');
-    Route::resource('attributes', 'AttributesController');
+    // Countries
+    Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
+    Route::resource('countries', 'CountriesController');
+
+    // Colors
+    Route::delete('colors/destroy', 'ColorController@massDestroy')->name('colors.massDestroy');
+    Route::resource('colors', 'ColorController');
+
+    // Brands
+    Route::delete('brands/destroy', 'BrandsController@massDestroy')->name('brands.massDestroy');
+    Route::resource('brands', 'BrandsController');
 });

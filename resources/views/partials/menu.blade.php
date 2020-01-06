@@ -92,13 +92,33 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('attribute_access')
-                            <li class="{{ request()->is('admin/attributes') || request()->is('admin/attributes/*') ? 'active' : '' }}">
-                                <a href="{{ route("admin.attributes.index") }}">
+                        @can('country_access')
+                            <li class="{{ request()->is('admin/countries') || request()->is('admin/countries/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.countries.index") }}">
+                                    <i class="fa-fw fas fa-flag">
+
+                                    </i>
+                                    <span>{{ trans('cruds.country.title') }}</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('color_access')
+                            <li class="{{ request()->is('admin/colors') || request()->is('admin/colors/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.colors.index") }}">
                                     <i class="fa-fw fas fa-cogs">
 
                                     </i>
-                                    <span>{{ trans('cruds.attribute.title') }}</span>
+                                    <span>{{ trans('cruds.color.title') }}</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('brand_access')
+                            <li class="{{ request()->is('admin/brands') || request()->is('admin/brands/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.brands.index") }}">
+                                    <i class="fa-fw fab fa-apple">
+
+                                    </i>
+                                    <span>{{ trans('cruds.brand.title') }}</span>
                                 </a>
                             </li>
                         @endcan
