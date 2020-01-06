@@ -21,6 +21,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('products/media', 'ProductApiController@storeMedia')->name('products.storeMedia');
     Route::apiResource('products', 'ProductApiController');
 
-    // Attributes
-    Route::apiResource('attributes', 'AttributesApiController');
+    // Countries
+    Route::apiResource('countries', 'CountriesApiController');
+
+    // Brands
+    Route::apiResource('brands', 'BrandsApiController');
 });

@@ -37,12 +37,6 @@ class StoreProductRequest extends FormRequest
             'tags'         => [
                 'array',
             ],
-            'atributes.*'  => [
-                'integer',
-            ],
-            'atributes'    => [
-                'array',
-            ],
         ];
     }
 }

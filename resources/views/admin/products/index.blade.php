@@ -46,7 +46,16 @@
                                         {{ trans('cruds.product.fields.photo') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.product.fields.atribute') }}
+                                        {{ trans('cruds.product.fields.country') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.country.fields.short_code') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.product.fields.color') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.product.fields.brand_name') }}
                                     </th>
                                     <th>
                                         &nbsp;
@@ -89,9 +98,16 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @foreach($product->atributes as $key => $item)
-                                                <span class="label label-info label-many">{{ $item->name }}</span>
-                                            @endforeach
+                                            {{ $product->country->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $product->country->short_code ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $product->color->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $product->brand_name->name ?? '' }}
                                         </td>
                                         <td>
                                             @can('product_show')
